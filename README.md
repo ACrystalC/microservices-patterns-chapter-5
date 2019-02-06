@@ -1,5 +1,36 @@
 ## # Ch 5 Designing business logic in a microservice architecture
 
+## Discussion Questions & Prompts
+
+*   DDD & Aggregate Root implementation in Ironboard. What would we do differently?
+    *   Assignments seems like it was a good implementation
+    *   Compliance, maybe not so much.
+*   Going hexagonal in rails seems like a big lift. No built in way to have aggregates play nice with Active Record. Also, no nice way to interact with objects that aren't active record objects. No question, just ranting.
+    *   Agreed. Rails framework is good for getting an app started, but seems to be bad for long-lived, well-designed code. What do we think? Drop Rails? 👹
+    *   +1. Rails definitely encourages designing your application in a way that does not strongly correlate with DDD and event sourcing, would be nice to use frameworks that are less opinionated so that we could structure our code (into Aggregates, Services, Events, etc) as we wish
+*   How are we thinking about event sourcing and audit logs? (Seems like it would be pretty useful, wonder if we should put this on our engineering roadmap)
+*   How does Segment play into event sourcing and the future of our codebase? We're sending a lot of events. Is there a unified schema for the data we're sending up?
+*   Event sourcing sounds a lot like Redux. Discuss.
+*   How often should snapshots be created? Would there be any benefit to always creating a current snapshot after every event creation? 
+    *   It seems like the more you keep your snapshots up to date (closer to the most recent event), the less issues you will have with event versioning and the necessity of upcasting 
+*   What's the main difference between publishing domain events and event sourcing?
+*   The lack of historical data in Learn has been a point of contention in the past. Why don't all apps use an event-first approach?
+*   How do you query an event based application?
+*   What are our Domains/Aggregates?
+*   Are we using Services "Correctly"?
+*   Is Event Sourcing all or nothing? Do you get any benefit doing this in part of a monolith?
+    *   Does incremental Event Sourcing help with slicing up a monolith into microservices?
+*   ReflectiveMutableCommandProcessingAggregate
+
+**Resources:**
+
+[https://www.developer.com/open/domain-driven-design-aggregates-with-ruby.html](https://www.developer.com/open/domain-driven-design-aggregates-with-ruby.html)
+
+[https://www.sitepoint.com/ddd-for-rails-developers-part-3-aggregates/](https://www.sitepoint.com/ddd-for-rails-developers-part-3-aggregates/) 
+
+[https://railseventstore.org/](https://railseventstore.org/)
+
+
 ### Intro
 
 - The Aggregate pattern structures a service's business logic as a collection of aggregates.
